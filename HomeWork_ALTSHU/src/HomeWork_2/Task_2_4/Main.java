@@ -49,7 +49,7 @@ public class Main {
             }
         }
 
-        // Проверяем на анограммы
+        // Проверяем на анаграммы
         int ind1, score;
         Object s1;
         for (int j=0; j<arrListDabl.size(); j++){
