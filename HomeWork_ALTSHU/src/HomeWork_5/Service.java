@@ -64,7 +64,6 @@ public class Service {
     }
 
     public int returnMenu() {
-//        System.out.println();
         System.out.println("\n1 - вернуться в главное меню");
         Scanner inInt = new Scanner(System.in);
         do {
@@ -81,7 +80,6 @@ public class Service {
         for (String pn : rep.keySet()) {
             printPerson(pn);
         }
-//        returnMenu();
     }
 
     public String searchPerson() {
@@ -91,7 +89,6 @@ public class Service {
         System.out.println("1 - по имени");
         System.out.println("2 - по номеру телефона");
         System.out.println("3 - по почте");
-//        System.out.println("4 - вернуться в Главное меню");
         System.out.print("Введите значение: ");
         int choice = 0;
         while (choice != 1 && choice != 2 && choice != 3) {
@@ -107,7 +104,6 @@ public class Service {
                     pn = searchEmail();
                     break;
             }
-//            choice = returnMenu();
         }
         return pn;
     }
@@ -141,14 +137,6 @@ public class Service {
                 pn1 = pn;
             }
         }
-
-//        Set<Map.Entry<String, Person>> repSet = repository.getRepository().entrySet();
-//        for (Map.Entry<String, Person> pair : repSet) {
-//            if (pair.getValue().getNameAndSurname().equals(str)) {
-//                pn = pair.getKey();
-//                printPerson(pn);
-//            }
-//        }
         return pn1;
     }
 
@@ -189,7 +177,6 @@ public class Service {
 
         } else {
             System.out.println("Запись с таким телефоном уже существует.");
-//            printPerson(pn);
             System.out.print("\nВыберите дальнейшие действия: \n1 - вернуться в главное меню, \n2 - редактировать имеющегося участника \nВведите значение: ");
             int choice = 0;
             while (choice != 1 && choice != 2) {
@@ -211,7 +198,6 @@ public class Service {
         } else {
             System.out.println("Удаленная запись: ");
             printPerson(phoneNumber);
-//            System.out.println("Запись удалена: " + repository.getRepository().remove(phoneNumber));
         }
         System.out.println("Выберите дальнейшие действия: \n1 - вернуться в главное меню, \n2 - продолжить удаление ");
         int choice = 0;
@@ -299,9 +285,6 @@ public class Service {
             while (choice != 1 && choice != 2) {
                 System.out.print("Введите значение: ");
                 choice = inInt.nextInt();
-
-//                if (choice == 2) choice_1=2;
-//                else choice_1=1
             }
             choice_1=choice;
         }
