@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class Repository {
-    private HashMap<String, Person> repository;
+    private HashMap<String, Person>  repository;
 
     public Repository() {
         this.repository = new HashMap<String, Person>();
