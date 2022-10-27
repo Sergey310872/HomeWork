@@ -44,6 +44,7 @@ class ThreadAgg extends Thread {
         this.item = it;
     }
 
+
     @Override
     public void run() {
         while (Main.timeFinish > new Date().getTime()) {
