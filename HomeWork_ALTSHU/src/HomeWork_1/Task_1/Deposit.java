@@ -20,7 +20,7 @@ public class Deposit {
                 +IncomeCalc(sumIn,period,rate)+" руб");
     }
 
-    private static double IncomeCalc(double sum, int per, int st)
+    public static double IncomeCalc(double sum, int per, int st)
     {
         double incY;
         double tax;

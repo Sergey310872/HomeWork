@@ -1,10 +1,18 @@
 package HomeWork_6.Task_6_5;
 
+import HomeWork_0.ScannerHW;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+    private static ScannerHW scannerHW = new ScannerHW();
+
+    public static void setScannerHW(ScannerHW scannerHW) {
+        Main.scannerHW = scannerHW;
+    }
+
     public static void main(String[] args) {
         ArrayList<Holidays> holiday = new ArrayList<Holidays>();
         holiday.add(new Holidays("Новый Год", 31, 12));
@@ -13,11 +21,12 @@ public class Main {
         holiday.add(new Holidays("Международный день похмелья", 1, 1));
 
         LocalDate date = LocalDate.now();
-        Scanner in = new Scanner(System.in);
+//        Scanner in = new Scanner(System.in);
         int n = 0;
         while (n == 0) {
             System.out.print("Введите дату в формате ГГГГ-ММ-ДД: ");
-            String dateStr = in.nextLine();
+//            String dateStr = in.nextLine();
+            String dateStr = scannerHW.scannerLine();
             try {
                 date = LocalDate.parse(dateStr);
                 n = 1;

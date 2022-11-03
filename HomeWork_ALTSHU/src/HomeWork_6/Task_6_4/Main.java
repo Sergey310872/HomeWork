@@ -1,11 +1,18 @@
 package HomeWork_6.Task_6_4;
 
+import HomeWork_0.ScannerHW;
+
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Scanner;
 import java.util.Set;
 
 public class Main {
+    private static ScannerHW scannerHW = new ScannerHW();
+    public static void setScannerHW(ScannerHW scannerHW) {
+        Main.scannerHW = scannerHW;
+    }
+
     public static void main(String[] args) {
         Set<String> zoneId = ZoneId.getAvailableZoneIds();
         Object[] arr = zoneId.stream().toArray();
@@ -19,12 +26,13 @@ public class Main {
         System.out.println("2-я таймзона: " + arr[timeZone_2] + " местное время: " + LocalTime.now(zoneId2));
     }
 
-    static int NumberTimeZone(String str, int n) {
-        Scanner in = new Scanner(System.in);
+    public static int NumberTimeZone(String str, int n) {
+//        Scanner in = new Scanner(System.in);
         int counter = 0;
         while (counter == 0) {
             System.out.print(str + n + ": ");
-            int num = in.nextInt();
+//            int num = in.nextInt();
+            int num = scannerHW.scannerInt();
             if (num >= 0 && num <= n) {
                 //               counter=1;
                 return num;

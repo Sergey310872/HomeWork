@@ -1,19 +1,34 @@
 package HomeWork_5;
 
+import HomeWork_0.ScannerHW;
+
 import java.util.*;
 
 public class Service {
     private Repository repository;
+    private ScannerHW scannerHW;
 
-    public Service() {
+    public Service(ScannerHW s) {
+        this.scannerHW = s;
         this.repository = new Repository();
-        //Первичная инициализация репозитория
-        this.repository.setRepPerson("+79218001111", new Person("+79218001111", "Иванов Иван Иванович"));
-        this.repository.setRepPerson("+79218002222", new Person("+79218002222", "Петров Иван Петрович"));
-        this.repository.setRepPerson("+79218003333", new Person("+79218003333", "Сидоров Иван Иванович"));
-        this.repository.setRepPerson("+79218004444", new Person("+79218004444", "Иванов Иван Иванович", "address@mail.ru", "г.Москва"));
-        this.repository.setRepPerson("+79218005555", new Person("+79218005555", "Fedor"));
     }
+    public Service() {
+        this.scannerHW = new ScannerHW();
+        this.repository = new Repository();
+//        this.repository.setRepPerson("+79218001111", new Person("+79218001111", "Иванов Иван Иванович"));
+//        this.repository.setRepPerson("+79218002222", new Person("+79218002222", "Петров Иван Петрович"));
+//        this.repository.setRepPerson("+79218003333", new Person("+79218003333", "Сидоров Иван Иванович"));
+//        this.repository.setRepPerson("+79218004444", new Person("+79218004444", "Иванов Иван Иванович", "address@mail.ru", "г.Москва"));
+//        this.repository.setRepPerson("+79218005555", new Person("+79218005555", "Fedor"));
+    }
+
+    public void setRepository(String pn, Person p){
+        this.repository.setRepPerson(pn, p);
+    }
+    public Repository getRepository(){
+        return this.repository;
+    }
+
 
     public void work() {
         int choice = 0;
@@ -58,18 +73,21 @@ public class Service {
         System.out.println("5 - Редактировать данные участника с определенным номером телефона");
         System.out.println("6 - Завершить выполнение");
         System.out.print("Введите значение: ");
-        Scanner in = new Scanner(System.in);
-        return in.nextInt();
+//        Scanner in = new Scanner(System.in);
+//        return in.nextInt();
+        int n=scannerHW.scannerInt();
+        return n;
 
     }
 
     public int returnMenu() {
         System.out.println("\n1 - вернуться в главное меню");
-        Scanner inInt = new Scanner(System.in);
+//        Scanner inInt = new Scanner(System.in);
         do {
             System.out.print("Введите значение: ");
         }
-        while (inInt.nextInt() != 1);
+//        while (inInt.nextInt() != 1);
+        while (scannerHW.scannerInt() != 1);
         return 4;
     }
 
@@ -84,7 +102,7 @@ public class Service {
 
     public String searchPerson() {
         String pn = new String();
-        Scanner inInt = new Scanner(System.in);
+//        Scanner inInt = new Scanner(System.in);
         System.out.println("По какому параметру ищем?");
         System.out.println("1 - по имени");
         System.out.println("2 - по номеру телефона");
@@ -92,7 +110,8 @@ public class Service {
         System.out.print("Введите значение: ");
         int choice = 0;
         while (choice != 1 && choice != 2 && choice != 3) {
-            choice = inInt.nextInt();
+//            choice = inInt.nextInt();
+            choice = scannerHW.scannerInt();
             switch (choice) {
                 case 1:
                     pn = searchName();
@@ -110,9 +129,10 @@ public class Service {
 
     public String searchPhoneNumber() {
         String pn = new String();
-        Scanner inStr = new Scanner(System.in);
+//        Scanner inStr = new Scanner(System.in);
         System.out.print("Введите номер телефона для поиска: ");
-        String str = inStr.nextLine();
+//        String str = inStr.nextLine();
+        String str = scannerHW.scannerLine();
         Person person = repository.getRepPerson(str);
         if (person == null) {
             System.out.println("Запись не найдена");
@@ -125,9 +145,10 @@ public class Service {
 
     public String searchName() {
         String pn1 = new String();
-        Scanner inStr = new Scanner(System.in);
+//        Scanner inStr = new Scanner(System.in);
         System.out.print("Введите Ф.И.О. для поиска: ");
-        String str = inStr.nextLine().trim();
+//        String str = inStr.nextLine().trim();
+        String str = scannerHW.scannerLine().trim();
         ArrayList<String> listNames = repository.getRepName(str);
         if (listNames.size() == 0) {
             System.out.println("Запись не найдена");
@@ -216,8 +237,8 @@ public class Service {
     }
 
     public void changeData(String pn) {
-        Scanner inInt = new Scanner(System.in);
-        Scanner inStr = new Scanner(System.in);
+//        Scanner inInt = new Scanner(System.in);
+//        Scanner inStr = new Scanner(System.in);
         Person p = repository.getRepPerson(pn);
         int choice_1 = 2;
         while (choice_1 == 2) {
@@ -232,11 +253,13 @@ public class Service {
             int choice = 0;
             while (choice != 1 && choice != 2 && choice != 3 && choice != 4) {
                 System.out.print("Введите значение: ");
-                choice = inInt.nextInt();
+//                choice = inInt.nextInt();
+                choice = scannerHW.scannerInt();
                 switch (choice) {
                     case 1:
                         System.out.print("Введите новый номер телефона: ");
-                        String phoneNumber = inStr.nextLine();
+//                        String phoneNumber = inStr.nextLine();
+                        String phoneNumber = scannerHW.scannerLine();
                         Person p1 = repository.getRepPerson(phoneNumber);
                         if (p1 == null) {
                             repository.getRepository().remove(pn);
@@ -245,7 +268,8 @@ public class Service {
                         break;
                     case 2:
                         System.out.print("Введите новые ФИО: ");
-                        String nameAndSurname = inStr.nextLine();
+//                        String nameAndSurname = inStr.nextLine();
+                        String nameAndSurname = scannerHW.scannerLine();
                         p.setNameAndSurname(nameAndSurname);
                         break;
                     case 3:
@@ -259,10 +283,12 @@ public class Service {
                         System.out.print("Введите порядковый номер редактируемого E-mail, либо 0- для ввода нового адреса: ");
                         int choiceEmail = -1;
                         while (choiceEmail > emailList.size() || choiceEmail < 0) {
-                            choiceEmail = inInt.nextInt();
+//                            choiceEmail = inInt.nextInt();
+                            choiceEmail = scannerHW.scannerInt();
                         }
                         System.out.print("Введите новый E-mail: ");
-                        String str = inStr.nextLine();
+//                        String str = inStr.nextLine();
+                        String str = scannerHW.scannerLine();
                         if (choiceEmail == 0) {
                             emailList.add(str);
                         } else {
@@ -272,7 +298,8 @@ public class Service {
                         break;
                     case 4:
                         System.out.print("Введите новый адрес: ");
-                        String address = inStr.nextLine();
+//                        String address = inStr.nextLine();
+                        String address = scannerHW.scannerLine();
                         p.setAddress(address);
                         break;
                     default:
@@ -284,7 +311,8 @@ public class Service {
             choice = 0;
             while (choice != 1 && choice != 2) {
                 System.out.print("Введите значение: ");
-                choice = inInt.nextInt();
+//                choice = inInt.nextInt();
+                choice = scannerHW.scannerInt();
             }
             choice_1=choice;
         }
